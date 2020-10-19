@@ -37,3 +37,5 @@ Cela indique au joueur s'il est sur le point de gagner ou de perdre.
 Les informations sont mises à jour chaque fois que le joueur propose une lettre.
 
 #### L'organigramme met en évidence tout ce qui peut se produire dans le jeu du pendu. Lorsque vous concevrez vos propres jeux, un organigramme vous indiquera tout ce que vous devez placer dans le code
+
+Merci à Al Sweigart pour l'exemple du code d'origine 
