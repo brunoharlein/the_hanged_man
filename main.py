@@ -65,11 +65,12 @@ def display_board(missed_letters, correct_letters, secret_word):
     # remplace les tirets par les lettres correctement devinées.
     for i in range(len(secret_word)):
         if secret_word[i] in correct_letters:
-            blanks = blanks[:i] + secret_word[i] + blanks[i+1:]
+            blanks = blanks[:i] + secret_word[i] + blanks[i + 1:]
         # affiche le mot secret avec des espaces entre les lettres.
     for letter in blanks:
         print(letter, end=" ")
     print()
+
 
 def get_guess(already_guessed):
     # affiche la lettre saisie par le joueur. S'assure qu'il s'agit d'une unique lettre et de rien d'autre
@@ -86,10 +87,12 @@ def get_guess(already_guessed):
         else:
             return guess
 
+
 def play_again():
     # Retourne True si le joueur veut recommencer, False sinon.
     print("Veux-tu rejouer (oui ou non) ?")
     return input().lower().startswith("o")
+
 
 print("P E N D U")
 missed_letters = ""
@@ -97,3 +100,11 @@ correct_letters = ""
 secret_word = get_random_word(words)
 game_is_done = False
 
+while True:
+    display_board(missed_letters, correct_letters, secret_word)
+
+    # Invite le joueur à proposer une lettre.
+    guess = get_guess(missed_letters, correct_letters)
+
+    if guess in secret_word:
+        correct_letters = correct_letters + guess
