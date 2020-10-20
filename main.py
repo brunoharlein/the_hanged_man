@@ -70,3 +70,18 @@ def display_board(missed_letters, correct_letters, secret_word):
     for letter in blanks:
         print(letter, end=" ")
     print()
+
+    def get_guess(already_guessed):
+        # affiche la lettre saisie par le joueur. S'assure qu'il s'agit d'une unique lettre et de rien d'autre
+        while True:
+            print("propose une lettre")
+            guess = input()
+            guess = guess.lower()
+            if len(guess) != 1:
+                print("propose une seule lettre")
+            elif guess in already_guessed:
+                print("Tu as déjà demandé cette lettre")
+            elif guess not in "abcdefghijklmnopqrstwxyz":
+                printt("Propose une lettre")
+            else:
+                return guess
