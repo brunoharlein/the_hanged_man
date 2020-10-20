@@ -71,17 +71,29 @@ def display_board(missed_letters, correct_letters, secret_word):
         print(letter, end=" ")
     print()
 
-    def get_guess(already_guessed):
-        # affiche la lettre saisie par le joueur. S'assure qu'il s'agit d'une unique lettre et de rien d'autre
-        while True:
-            print("propose une lettre")
-            guess = input()
-            guess = guess.lower()
-            if len(guess) != 1:
-                print("propose une seule lettre")
-            elif guess in already_guessed:
-                print("Tu as déjà demandé cette lettre")
-            elif guess not in "abcdefghijklmnopqrstwxyz":
-                printt("Propose une lettre")
-            else:
-                return guess
+def get_guess(already_guessed):
+    # affiche la lettre saisie par le joueur. S'assure qu'il s'agit d'une unique lettre et de rien d'autre
+    while True:
+        print("propose une lettre")
+        guess = input()
+        guess = guess.lower()
+        if len(guess) != 1:
+            print("propose une seule lettre")
+        elif guess in already_guessed:
+            print("Tu as déjà demandé cette lettre")
+        elif guess not in "abcdefghijklmnopqrstwxyz":
+            print("Propose une lettre")
+        else:
+            return guess
+
+def play_again():
+    # Retourne True si le joueur veut recommencer, False sinon.
+    print("Veux-tu rejouer (oui ou non) ?")
+    return input().lower().startswith("o")
+
+print("P E N D U")
+missed_letters = ""
+correct_letters = ""
+secret_word = get_random_word(words)
+game_is_done = False
+
