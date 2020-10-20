@@ -108,3 +108,15 @@ while True:
 
     if guess in secret_word:
         correct_letters = correct_letters + guess
+
+        # Vérifie si le joueur a gagné
+        found_all_letters = True
+        for i in range(len(secret_word)):
+            if secret_word[i] not in correct_letters:
+                found_all_letters = False
+            break
+        if found_all_letters:
+            print("Oui le mot secret est " + secret_word + " Tu as gagné")
+            game_is_done = True
+    else:
+        missed_letters = missed_letters + guess
