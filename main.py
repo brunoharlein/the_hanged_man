@@ -104,7 +104,7 @@ while True:
     display_board(missed_letters, correct_letters, secret_word)
 
     # Invite le joueur à proposer une lettre.
-    guess = get_guess(missed_letters, correct_letters)
+    guess = get_guess(missed_letters + correct_letters)
 
     if guess in secret_word:
         correct_letters = correct_letters + guess
@@ -114,9 +114,26 @@ while True:
         for i in range(len(secret_word)):
             if secret_word[i] not in correct_letters:
                 found_all_letters = False
-            break
+                break
         if found_all_letters:
             print("Oui le mot secret est " + secret_word + " Tu as gagné")
             game_is_done = True
     else:
         missed_letters = missed_letters + guess
+
+        # Verifie si le joueur a perdu.
+        if len(missed_letters) == len(hangman_pics) - 1:
+            display_board(missed_letters, correct_letters, secret_word)
+            print(" Tu as épuisé tous tes essais après" + str(len(missed_letters)) + " mauvaises lettres et " + str(
+                len(correct_letters)) + " lettres exactes, le mot secret était " + secret_word + ".")
+            game_is_done = True
+
+    # Demande au joueur s'il veut recommencer (seulement si la partie est finie).
+    if game_is_done:
+        if play_again():
+            missed_letters = ""
+            correct_letters = ""
+            game_is_done = False
+            secret_word = get_random_word(words)
+        else:
+            break
