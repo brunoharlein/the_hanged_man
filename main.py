@@ -82,7 +82,7 @@ def get_guess(already_guessed):
             print("propose une seule lettre")
         elif guess in already_guessed:
             print("Tu as déjà demandé cette lettre")
-        elif guess not in "abcdefghijklmnopqrstwxyz":
+        elif guess not in "abcdefghijklmnopqrstuwxyz":
             print("Propose une lettre")
         else:
             return guess
